@@ -5,6 +5,7 @@ using namespace std;
 
 City::City(char *in, char *out)
 {
+
 	outputFilePath = out;
 
 	ifstream ifs (in);
@@ -13,7 +14,6 @@ City::City(char *in, char *out)
 
 	int xi, yi, xf, yf, e, l;
 
-//	getline(ifs, line);
 	ifs >> this->row >> this->column >> nbVehicules >> nbOrders >> this->bonus >> this->tmax;
 
 	while (!ifs.eof() && noOrder < nbOrders ) {
@@ -21,39 +21,42 @@ City::City(char *in, char *out)
 		orders.push_back( new Order(noOrder++, Point(xi, yi), Point(xf, yf), e, l));
 	}
 	ifs.close();
+    std::vector<Vehicle>  arr(static_cast<unsigned long>(nbVehicules), Vehicle());
+    fleet  = arr;
 
-	for (int i = 0; i < nbVehicules; i++)
-		fleet.push_back(new Vehicule());
 }
 
 City::~City()
 {
-	for (Order::Lst::iterator it = orders.begin(); it != orders.end(); it++)
-		delete *it;
+	for (auto &order : orders)
+        delete order;
 }
 
 
 void City::basic_simulation() {
 
-	for (Order::Lst::iterator it = orders.begin(); it != orders.end(); it++) {
-		for (Vehicule::Lst::iterator itf = fleet.begin(); itf != fleet.end(); itf++) {
-			if ((*itf)->add(*it))
-				break;
-		}
+	for (auto &order : orders) {
+        int cheaper_vehicle = -1;
+        int cheaper_cost = -1;
+        for(int i = 0; i<fleet.size();i++){
+            int currentCostForVehicle =  fleet[i].getDistanceCost( order);
+            if( cheaper_cost == -1 || currentCostForVehicle < cheaper_cost){
+                cheaper_cost =currentCostForVehicle;
+                cheaper_vehicle = i;
+            }
+        }
+        fleet[cheaper_vehicle].add(order);
 	}
 }
 
 
 void City::fleetStat() {
 	std::ofstream ofs(outputFilePath);
-
-	for (Vehicule::Lst::iterator it = fleet.begin(); it != fleet.end(); it++) {
-		ofs << (*it)->orders.size() << " ";
-
-		for (Order::Lst::iterator ito = (*it)->orders.begin(); ito != (*it)->orders.end(); ito++)
-			ofs << (*ito)->no << " ";
-
-		ofs << "\n";
-	}
+for(auto &vehicle : fleet){
+    ofs << vehicle.orders.size() << " ";
+    for (auto &order : vehicle.orders)
+        ofs << order->no << " ";
+    ofs << "\n";
+}
 
 }

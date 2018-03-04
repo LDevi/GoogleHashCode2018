@@ -11,5 +11,5 @@ add_executable(GoogleHashCode2018
         src/Order.h
         src/Point.cpp
         src/Point.h
-        src/Vehicule.cpp
-        src/Vehicule.h)
+        src/Vehicle.cpp
+        src/Vehicle.h)

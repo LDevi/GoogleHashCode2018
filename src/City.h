@@ -1,6 +1,8 @@
 #pragma once
-#include "Vehicule.h"
+#include "Vehicle.h"
 #include <string>
+#include <vector>
+
 class City
 {
 	std::string outputFilePath;
@@ -8,7 +10,7 @@ class City
 	int column, row;
 	int tmax, bonus;
 	Order::Lst orders;
-	Vehicule::Lst fleet;
+	std::vector<Vehicle>  fleet;
 
 public:
 	City(char *in, char *string);
