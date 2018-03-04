@@ -12,7 +12,7 @@ Indeed, the number of cars, their positions but also all rices (duration + posit
 
 ### The first try.
 Certainly not the most optimized it is nonetheless a primordial step to understand the problem before going further : in the process of optimization.
-The **"first_attempt"** branch contains a simple algorithm.
+The [first_attempt](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt) branch contains a simple algorithm.
 
 
 
