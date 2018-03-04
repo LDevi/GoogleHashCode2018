@@ -14,6 +14,7 @@ Indeed, the number of cars, their positions but also all rices (duration + posit
 Certainly not the most optimized it is nonetheless a primordial step to understand the problem before going further : in the process of optimization.
 The [first_attempt](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt) branch contains a simple algorithm.
 
-
-
+### Adding greedy behaviour.
+A step further in the optimization process could be adding a greedy behaviour to the algorithm
+The [greedy_without_bonus](https://github.com/LDevi/GoogleHashCode2018/tree/greedy_without_bonus) branch implements a simple greedy behavior : give the ride to the nearest vehicle.
  
