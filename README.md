@@ -93,9 +93,13 @@ fun canTakeMoreRide(){
 
 #### Total score 
 We reached the total score of 11 649 924  !
-![Image of Yaktocat](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt/res/score/score.png)
+![score](https://raw.githubusercontent.com/LDevi/GoogleHashCode2018/first_attempt/res/score/score.PNG)
 
-BUT, when reviewing our code I noticed a little typo.
+EDIT :
+When reviewing our code I noticed a little typo.
 We were taking into account the earliest start when computing already taken rides but not the one tested when adding.
+https://github.com/LDevi/GoogleHashCode2018/commit/e228d68cfd1de19f96ecbad1f215cb333b39658a
+After fix : 
+We reached the total score of 29 285 232 !
 
-Fixed branch is [here](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt_fixed)
+![score_fixed](https://raw.githubusercontent.com/LDevi/GoogleHashCode2018/first_attempt/res/score/score_fixed.PNG)
