@@ -30,7 +30,7 @@ bool Vehicule::add(Order *n) {
 	// T pour rejoindre
 	ts = abs(n->start.x - cur.x) + abs(n->start.y - cur.y);
 	// attente
-	tn += (n->earliest > ts) ? n->earliest : ts;
+	tv += (n->earliest > ts) ? n->earliest : ts;
 	// parcours
 	tv += abs(n->end.x - n->start.x) + abs(n->end.y - n->start.y);
 
