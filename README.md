@@ -4,6 +4,9 @@ Self-driving rides - Problem statement for the Online Qualification Round of Has
 ### What is Google Hash Code ? 
 https://hashcode.withgoogle.com/overview.html
 
+### Problem statement 
+The problem statement for the online qualification round is available [here](https://github.com/LDevi/GoogleHashCode2018/blob/master/doc/online_qualification_round_2018.pdf)
+
 ### Our implementation.
 We decided to use the C ++ language to answer the problem. 
 At first, we considered the problem of "self-driving rides" as the construction of a schedule.
