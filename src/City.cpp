@@ -10,18 +10,18 @@ City::City(char *in, char *out)
 
 	ifstream ifs (in);
 	string line;
-	int nbOrders, nbVehicules, noOrder = 0;
+	int nbOrders, nbVehicles, noOrder = 0;
 
 	int xi, yi, xf, yf, e, l;
 
-	ifs >> this->row >> this->column >> nbVehicules >> nbOrders >> this->bonus >> this->tmax;
+	ifs >> this->row >> this->column >> nbVehicles >> nbOrders >> this->bonus >> this->tMax;
 
 	while (!ifs.eof() && noOrder < nbOrders ) {
 		ifs >> xi >> yi >> xf >> yf >> e >> l;
 		orders.push_back( new Order(noOrder++, Point(xi, yi), Point(xf, yf), e, l));
 	}
 	ifs.close();
-    std::vector<Vehicle>  arr(static_cast<unsigned long>(nbVehicules), Vehicle());
+    std::vector<Vehicle>  arr(static_cast<unsigned long>(nbVehicles), Vehicle());
     fleet  = arr;
 
 }

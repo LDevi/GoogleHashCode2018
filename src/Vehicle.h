@@ -6,15 +6,15 @@ class Vehicle
 
 public:
 	Order::Lst orders;
-	typedef std::list<Vehicle *> Lst;
 
 	Vehicle();
 	~Vehicle();
 
-	bool add(Order *);
+	bool add(Order *n);
 
     int distanceBetween(const Point &startPositionPoint, const Point &endPositionPoint) const;
 
 	int getDistanceCost(const Order *n) const;
+
 };
 

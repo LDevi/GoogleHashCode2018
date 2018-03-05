@@ -8,7 +8,7 @@ class City
 	std::string outputFilePath;
 
 	int column, row;
-	int tmax, bonus;
+	int tMax, bonus;
 	Order::Lst orders;
 	std::vector<Vehicle>  fleet;
 

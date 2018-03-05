@@ -7,7 +7,5 @@ Point::Point(int _x, int _y)
 {
 }
 
-
 Point::~Point()
-{
-}
+= default;
