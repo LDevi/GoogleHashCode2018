@@ -17,7 +17,7 @@ If it can not, then ask to the next vehicle.
 
 ```c_cpp
 for r in rides
- for v in vehicle
+ for v in allVehicles
   if v can make r 
     then assign r to v
     break
