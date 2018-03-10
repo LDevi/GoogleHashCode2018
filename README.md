@@ -50,15 +50,14 @@ Point currentPosition(xCur, yCur)
 fun distanceBetweenPoints(input Point start(xStart, yStart), input Point end(xEnd,yEnd)) = abs(xEnd-xStart) + abs(yEnd - yStart)
 
 
-fun computeTimeToRide(input Point startPosition(xStart, yStart),
-    input Point endPosition(xEnd,yEnd)){
-    tReachStart = distanceBetweenPoints(currentPosition,startPosition)
-    tWait = tDeadLine-tReachStart>0 ? tDeadLine-tReachStart : 0
-    tReachEnd = distanceBetweenPoints(startPosition,endPosition)
+fun computeTimeToRide(input Ride ride){
+    tReachStart = distanceBetweenPoints(ride.startPosition, currentPosition)
+    tWait = earlyStart-tReachStart>0 ? earlyStart-tReachStart : 0
+    tReachEnd = distanceBetweenPoints(ride.endPosition, ride.startPosition)
     return (tReachStart+tWait+tReachEnd)
 }
 
-fun canTakeRide(input Ride ride) = (computeTimeToRide(ride.startPosition,ride.endPosition) < ride.deadLine)
+fun canTakeRide(input Ride ride) = (computeTimeToRide(ride) < ride.deadLine)
 
 }
 ```
@@ -80,7 +79,7 @@ ListOf:Point scheduledRides
 then, ```fun canTakeRide()``` becomes :
 ```
 fun canTakeRide(input Ride ride){
-return canTakeMoreRide() && (computeTimeToRide(ride.startPosition,ride.endPosition) < ride.deadLine)
+return canTakeMoreRide() && (computeTimeToRide(ride) < ride.deadLine)
 }
 
 ```
@@ -92,6 +91,7 @@ fun canTakeMoreRide(){
      totalTime += computeTimeToRide(r)
      if totalTime >= r.tDeadLine return false
     } 
+// Important step is : update the currentPosition for Vehicle Object.
     currentPosition = scheduledRides.last.endPosition
 }
 
