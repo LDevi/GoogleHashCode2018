@@ -10,14 +10,14 @@ The problem statement for the online qualification round is available [here](htt
 ### Our implementation.
 We decided to use the C ++ language to answer the problem. 
 At first, we considered the problem of "self-driving rides" as the construction of a schedule.
-Indeed, the number of cars, their positions but also all rices (duration + positions) are known in advance.
+Indeed, the number of cars, their positions but also all rides (duration + positions) are known in advance.
 
 
 ### The first try.
-Certainly not the most optimized it is nonetheless a primordial step to understand the problem before going further : in the process of optimization.
-The [first_attempt](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt) branch contains a simple algorithm.
+Certainly not the most optimized, it is nonetheless a primordial step to understand the problem before going further in the process of optimization
+The [first_attempt](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt) branch contains a simple algorithm : for each race, seek the first vehicle cappable to finish on time and assign the ride to it.
 
 ### Adding greedy behaviour.
-A step further in the optimization process could be adding a greedy behaviour to the algorithm
-The [greedy_without_bonus](https://github.com/LDevi/GoogleHashCode2018/tree/greedy_without_bonus) branch implements a simple greedy behavior : give the ride to the nearest vehicle.
+A step further in the optimization process could be adding a greedy behaviour to the algorithm.
+The [greedy_without_bonus](https://github.com/LDevi/GoogleHashCode2018/tree/greedy_without_bonus) branch add a simple greedy behavior [first_attempt](https://github.com/LDevi/GoogleHashCode2018/tree/first_attempt): for each race, among vehicles cappable to finish on time, seek the fastest vehicle to finish and assign the ride to it.
  
