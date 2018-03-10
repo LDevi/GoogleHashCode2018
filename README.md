@@ -89,7 +89,7 @@ return canTakeMoreRide() && (computeTimeToRide(ride) < ride.deadLine)
 fun canTakeMoreRide(){
     for r in scheduledRides {
      totalTime += computeTimeToRide(r)
-     if totalTime >= r.tDeadLine return false
+     if totalTime >= r.deadline return false
     } 
 // Important step is : update the currentPosition for Vehicle Object.
     currentPosition = scheduledRides.last.endPosition
