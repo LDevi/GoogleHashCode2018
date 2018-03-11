@@ -36,16 +36,18 @@ City::~City()
 void City::basic_simulation() {
 
 	for (auto &order : orders) {
-        int cheaper_vehicle = -1;
-        int cheaper_cost = -1;
+        int bestVehicleIndex = BEST_VEHICLE_NOT_FOUND;
+        int greatestNumberOfPoints = NO_POINT_EARNED;
         for(int i = 0; i<fleet.size();i++){
-            int currentCostForVehicle =  fleet[i].getDistanceCost( order);
-            if( cheaper_cost == -1 || currentCostForVehicle < cheaper_cost){
-                cheaper_cost =currentCostForVehicle;
-                cheaper_vehicle = i;
+            int pointForRide = fleet[i].getPointForRide(order);
+            if( pointForRide > greatestNumberOfPoints){
+                greatestNumberOfPoints = pointForRide;
+                bestVehicleIndex = i;
             }
         }
-        fleet[cheaper_vehicle].add(order);
+        if(bestVehicleIndex != BEST_VEHICLE_NOT_FOUND) {
+            fleet[bestVehicleIndex].add(order);
+        }
 	}
 }
 

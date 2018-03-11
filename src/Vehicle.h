@@ -12,9 +12,10 @@ public:
 
 	bool add(Order *n);
 
-    int distanceBetween(const Point &startPositionPoint, const Point &endPositionPoint) const;
+    int timeBetween(const Point &startPositionPoint, const Point &endPositionPoint) const;
 
-	int getDistanceCost(const Order *n) const;
+	int getPointForRide(const Order *n) const;
 
+    void timeAndPosForScheduledOrders(int &totalTime, Point &cur) const;
 };
 

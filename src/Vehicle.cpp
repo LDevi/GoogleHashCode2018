@@ -1,4 +1,5 @@
 #include "Vehicle.h"
+#include "City.h"
 #include <complex>
 
 
@@ -13,37 +14,35 @@ bool Vehicle::add(Order *n) {
         orders.push_back(n);
 }
 
-int Vehicle::getDistanceCost(const Order *n) const {
-    int tv=0;
-
+int Vehicle::getPointForRide(const Order *n) const {
+    int totalTime=0;
     Point cur(0, 0);
+    timeAndPosForScheduledOrders(totalTime, cur);
+
+    Point processingOrderStartPoint = n->start;
+    Point processingOrderEndPoint = n->end;
+    totalTime += timeBetween(processingOrderStartPoint, cur);
+    totalTime = (n->earliest > totalTime) ? n->earliest : totalTime;
+    int timeForRide = timeBetween(processingOrderEndPoint, processingOrderStartPoint);
+    totalTime += timeForRide;
+    if(totalTime <= n->latest) {
+        return timeForRide;
+    }
+    return NO_POINT_EARNED;
+}
+
+void Vehicle::timeAndPosForScheduledOrders(int &totalTime, Point &cur) const {
     for (auto &order : orders) {
-        // T pour rejoindre
         Point &orderStartPoint = order->start;
         Point &orderEndPoint = order->end;
-        tv += distanceBetween(cur, orderStartPoint);
-        // attente
-        tv = (order->earliest > tv) ? order->earliest : tv;
-        // parcours
-        tv += distanceBetween(orderEndPoint, orderStartPoint);
+        totalTime += timeBetween(cur, orderStartPoint);
+        totalTime = (order->earliest > totalTime) ? order->earliest : totalTime;
+        totalTime += timeBetween(orderEndPoint, orderStartPoint);
         cur.x = orderEndPoint.x;
         cur.y = orderEndPoint.y;
     }
-
-    // T pour rejoindre
-    Point processingOrderStartPoint = n->start;
-    tv += distanceBetween(processingOrderStartPoint, cur);
-    // attente
-    tv = (n->earliest > tv) ? n->earliest : tv;
-    // parcours
-    Point processingOrderEndPoint = n->end;
-    tv += distanceBetween(processingOrderEndPoint, processingOrderStartPoint);
-    if(tv <= n->latest) {
-        return tv;
-    }
-    return -1;
 }
 
-int Vehicle::distanceBetween(const Point &startPositionPoint, const Point &endPositionPoint) const {
+int Vehicle::timeBetween(const Point &startPositionPoint, const Point &endPositionPoint) const {
     return abs(endPositionPoint.x - startPositionPoint.x) + abs(endPositionPoint.y - startPositionPoint.y);
 }
