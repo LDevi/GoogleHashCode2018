@@ -21,7 +21,7 @@ int main() {
 
 char *getInputFilePath(const char *inputFileName) {
     char* inputFileAbsolutePath;
-    inputFileAbsolutePath = static_cast<char *>(calloc(strlen(INPUT_FILE_PATH) + strlen(inputFileName) + 1, sizeof(char)));
+    inputFileAbsolutePath = static_cast<char *>(calloc(strlen(INPUT_FILE_PATH) + strlen(inputFileName) + 1+strlen(FILE_NAME_INPUT_EXT), sizeof(char)));
     strcpy(inputFileAbsolutePath, INPUT_FILE_PATH);
     strcat(inputFileAbsolutePath, inputFileName);
     strcat(inputFileAbsolutePath, FILE_NAME_INPUT_EXT);
@@ -30,7 +30,7 @@ char *getInputFilePath(const char *inputFileName) {
 
 char *getOutputFilePath(const char *inputFileName) {
     char* inputFileAbsolutePath;
-    inputFileAbsolutePath = static_cast<char *>(calloc(strlen(INPUT_FILE_PATH) + strlen(inputFileName) + 1, sizeof(char)));
+    inputFileAbsolutePath = static_cast<char *>(calloc(strlen(INPUT_FILE_PATH) + strlen(inputFileName) + 1+strlen(FILE_NAME_OUTPUT_EXT), sizeof(char)));
     strcpy(inputFileAbsolutePath, INPUT_FILE_PATH);
     strcat(inputFileAbsolutePath, inputFileName);
     strcat(inputFileAbsolutePath, FILE_NAME_OUTPUT_EXT);
