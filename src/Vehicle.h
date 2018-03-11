@@ -14,7 +14,7 @@ public:
 
     int timeBetween(const Point &startPositionPoint, const Point &endPositionPoint) const;
 
-	int getPointForRide(const Order *n) const;
+	double getPointForRide(Order *&n, int bonus) const;
 
     void timeAndPosForScheduledOrders(int &totalTime, Point &cur) const;
 };
