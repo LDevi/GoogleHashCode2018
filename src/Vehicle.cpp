@@ -29,11 +29,10 @@ double Vehicle::getPointForRide(Order *&n, int bonus) const {
     int totalPointForThisRide =  timeForRide + (early?bonus:0);
     if(totalTime <= n->latest) {
         if(totalPointForThisRide == 0){
-            return timeForRide;
+            return totalTime;
         }else {
-            return timeForRide/totalPointForThisRide;
+            return totalTime/totalPointForThisRide;
         }
-
     }
     return NO_POINT_EARNED;
 }
