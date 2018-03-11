@@ -37,10 +37,11 @@ void City::basic_simulation() {
 
 	for (auto &order : orders) {
         int bestVehicleIndex = BEST_VEHICLE_NOT_FOUND;
-        int greatestNumberOfPoints = NO_POINT_EARNED;
+        double greatestNumberOfPoints = NO_POINT_EARNED;
         for(int i = 0; i<fleet.size();i++){
-            int pointForRide = fleet[i].getPointForRide(order);
-            if( pointForRide > greatestNumberOfPoints){
+            double pointForRide = fleet[i].getPointForRide(order);
+            if( (greatestNumberOfPoints == NO_POINT_EARNED   && pointForRide != NO_POINT_EARNED)
+                || (greatestNumberOfPoints != NO_POINT_EARNED && pointForRide < greatestNumberOfPoints)){
                 greatestNumberOfPoints = pointForRide;
                 bestVehicleIndex = i;
             }

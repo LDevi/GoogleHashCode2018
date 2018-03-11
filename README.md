@@ -34,5 +34,5 @@ for r in rides {
 
 
 #### Total score 
-We reached the total score of 33 667 034, it's ~15% more than the last score !
+We reached the total score of 32 387 097, it's ~10% more than the last score !
 ![score](https://raw.githubusercontent.com/LDevi/GoogleHashCode2018/greedy_without_bonus/res/score/score.PNG)

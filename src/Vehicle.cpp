@@ -14,7 +14,7 @@ bool Vehicle::add(Order *n) {
         orders.push_back(n);
 }
 
-int Vehicle::getPointForRide(const Order *n) const {
+double Vehicle::getPointForRide(Order *&n) const {
     int totalTime=0;
     Point cur(0, 0);
     timeAndPosForScheduledOrders(totalTime, cur);
@@ -22,11 +22,17 @@ int Vehicle::getPointForRide(const Order *n) const {
     Point processingOrderStartPoint = n->start;
     Point processingOrderEndPoint = n->end;
     totalTime += timeBetween(processingOrderStartPoint, cur);
-    totalTime = (n->earliest > totalTime) ? n->earliest : totalTime;
+    bool early = n->earliest > totalTime;
+    totalTime = early ? n->earliest : totalTime;
     int timeForRide = timeBetween(processingOrderEndPoint, processingOrderStartPoint);
     totalTime += timeForRide;
     if(totalTime <= n->latest) {
-        return timeForRide;
+        if(timeForRide == 0){
+            return totalTime;
+        }else {
+            return totalTime/timeForRide;
+        }
+
     }
     return NO_POINT_EARNED;
 }
