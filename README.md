@@ -23,16 +23,16 @@ for r in rides
     break
 ```
 
-#### Second part - How to decide whether or not a vehicle can take a ride.
+#### Second part - How to decide whether or not a vehicle can take the ride.
 
-Second step was to decide how a vehicle can make or not a ride.
-A first answer could be : "This vehicle can make the ride if the ride can be made on time". 
+Second step was to decide how a vehicle can accept or not a ride.
+A first answer could be : "This vehicle can accept the ride if the ride can be finish on time". 
 
-Thus, a vehicle can make a ride if : 
+Thus, a vehicle can accept a ride if : 
 - the time to get to the start intersection;
 - plus the time to wait for the earliest start (if needed); 
 - plus time to get to the finish intersection;
-- does not exceed the deadline nor the end of the total time.
+- do not exceed the deadline nor the end of the total time.
 
 We need to calculate the distance between two intersections in the city, fortunately the statement gives us the formula (oh, Pythagoras ...).
 
@@ -64,10 +64,10 @@ fun canTakeRide(input Ride ride) = (computeTimeToRide(ride) < ride.deadLine)
 
 We laid the firsts bricks. 
 
-But what happens if the vehicle already has other planned races?
-We need to take into account the rides already assigned to that vehicle to tell whether or not the vehicle can make an other ride.
+But what happens if the vehicle already has other planned rides?
+We need to take into account vehicle's assigned rides to tell whether or not the vehicle can accept an other ride.
 
-We need to add the list of already scheduled rides to each vehicle :
+Add the list of already scheduled rides to each vehicle :
 
 ```
 Object Vehicle {
